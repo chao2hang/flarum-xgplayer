@@ -1,0 +1,38 @@
+{
+    "name": "chaos/xigua-video",
+    "description": "Integrate XgPlayer (ByteDance video player) into Flarum posts with support for MP4, HLS, FLV and DASH formats.",
+    "type": "flarum-extension",
+    "keywords": ["flarum", "extension", "xgplayer", "video", "player", "bytedance", "hls", "flv", "dash"],
+    "homepage": "https://github.com/chao2hang/flarum-xgplayer",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Chaos",
+            "homepage": "https://github.com/chao2hang"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/chao2hang/flarum-xgplayer/issues",
+        "source": "https://github.com/chao2hang/flarum-xgplayer"
+    },
+    "require": {
+        "flarum/core": "^2.0.0",
+        "flarum/bbcode": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Chaos\\XiguaVideo\\": "src/"
+        }
+    },
+    "extra": {
+        "flarum-extension": {
+            "title": "XgPlayer Integration",
+            "description": "Embed videos using ByteDance XgPlayer in Flarum posts",
+            "icon": {
+                "name": "fas fa-video",
+                "backgroundColor": "#000000",
+                "color": "#ffffff"
+            }
+        }
+    }
+}

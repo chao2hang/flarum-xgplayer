@@ -1,0 +1,218 @@
+.xgplayer-container {
+  max-width: 100%;
+  margin: 1em 0;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #000;
+
+  video {
+    width: 100%;
+    height: auto;
+  }
+
+  // Hide PiP button by default - only show in fullscreen
+  .xgplayer-pip,
+  .xgplayer-pip-btn,
+  [data-pip="true"],
+  .xgplayer-icon-pip {
+    display: none !important;
+  }
+
+  // Fix fullscreen mode - override container constraints
+  &:fullscreen,
+  &:-webkit-full-screen,
+  &:-moz-full-screen {
+    max-width: none;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    border-radius: 0;
+    background: #000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999999;
+
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    // Show PiP button in fullscreen
+    .xgplayer-pip,
+    .xgplayer-pip-btn,
+    [data-pip="true"],
+    .xgplayer-icon-pip {
+      display: block !important;
+    }
+  }
+
+  // XGPlayer fullscreen active class
+  &.xg-fullscreen-active,
+  &[data-fullscreen="true"] {
+    max-width: none;
+    width: 100vw !important;
+    height: 100vh !important;
+    margin: 0;
+    border-radius: 0;
+    background: #000;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    z-index: 999999;
+
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    // Show PiP button in fullscreen
+    .xgplayer-pip,
+    .xgplayer-pip-btn,
+    [data-pip="true"],
+    .xgplayer-icon-pip {
+      display: block !important;
+    }
+  }
+}
+
+// Mobile progress bar enhancement - separate media query
+@media (max-width: 768px) {
+  .xgplayer-container {
+    // Make progress bar taller and more visible
+    .xgplayer-progress {
+      height: 6px !important;
+      margin: 0 !important;
+      padding: 8px 0 !important;
+      background: rgba(255, 255, 255, 0.1) !important;
+
+      &:hover {
+        height: 10px !important;
+      }
+
+      // Played portion - bright red
+      .xgplayer-progress-played {
+        background: #dc0024 !important;
+        height: 100% !important;
+      }
+
+      // Buffered portion
+      .xgplayer-progress-cache {
+        background: rgba(255, 255, 255, 0.3) !important;
+        height: 100% !important;
+      }
+
+      // Thumb/drag button - larger touch target
+      .xgplayer-progress-btn,
+      .xgplayer-progress-point {
+        width: 16px !important;
+        height: 16px !important;
+        background: #dc0024 !important;
+        border: 2px solid #fff !important;
+        border-radius: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        top: 50% !important;
+        box-shadow: 0 0 4px rgba(0, 0, 0, 0.5) !important;
+      }
+    }
+
+    // Make control bar taller for better touch targets
+    .xgplayer-controls {
+      height: 48px !important;
+      padding: 0 8px !important;
+    }
+
+    // Ensure control buttons are large enough
+    .xgplayer-icon {
+      width: 36px !important;
+      height: 36px !important;
+      padding: 6px !important;
+    }
+
+    // Time display - slightly larger
+    .xgplayer-time {
+      font-size: 12px !important;
+    }
+  }
+}
+
+// XGPlayer fullscreen wrapper - when xgplayer creates its own fullscreen container
+.xgplayer-fullscreen-wrapper {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  z-index: 999999 !important;
+  background: #000;
+
+  .xgplayer-container {
+    max-width: none;
+    width: 100% !important;
+    height: 100% !important;
+    margin: 0;
+    border-radius: 0;
+
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+}
+
+.xgplayer-modal {
+  .xgplayer-type-selector {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .xgplayer-type-option {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 12px;
+    border: 2px solid var(--control-bg);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover {
+      border-color: var(--primary-color);
+      background: var(--control-bg);
+    }
+
+    input[type="radio"] {
+      margin: 0;
+      accent-color: var(--primary-color);
+    }
+
+    &:has(input:checked) {
+      border-color: var(--primary-color);
+      background: var(--primary-color);
+      color: #fff;
+
+      small {
+        color: rgba(255, 255, 255, 0.8);
+      }
+    }
+  }
+
+  .xgplayer-type-label {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+
+    strong {
+      font-size: 14px;
+    }
+
+    small {
+      font-size: 11px;
+      color: var(--control-color);
+    }
+  }
+}
