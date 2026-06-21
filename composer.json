@@ -1,5 +1,5 @@
 {
-    "name": "chaos/xigua-video",
+    "name": "chao2hang/flarum-xgplayer",
     "description": "Integrate XgPlayer (ByteDance video player) into Flarum posts with support for MP4, HLS, FLV and DASH formats.",
     "type": "flarum-extension",
     "keywords": ["flarum", "extension", "xgplayer", "video", "player", "bytedance", "hls", "flv", "dash"],
